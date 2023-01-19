@@ -1,7 +1,6 @@
 import React from 'react';
 import './Home.css';
-import { NavLink } from 'react-router-dom';
-import hero from '../images/1_2.png';
+import hero from '../images/4.jpg';
 
 const Home = () => {
   return (

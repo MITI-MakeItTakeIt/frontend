@@ -1,6 +1,6 @@
 .hero {
   width: 100%;
-  height: 100%;
+  height: 1000px;
   margin-top: 80px;
 }
 .hero .image__wrap {
@@ -14,4 +14,5 @@
   /* height: 100%; */
   /* margin: 0 auto; */
   width: 100%;
+  height: 100%;
 }
