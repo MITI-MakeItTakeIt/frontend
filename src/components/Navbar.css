@@ -56,12 +56,13 @@ header {
 
 .navbar .logo {
   position: absolute;
-  width: 123px;
-  height: 105px;
+  /* width: 123px; */
+  /* height: 105px; */
+  width: 100px;
   top: 35%;
   left: 0;
   right: 0;
   margin: 0 auto;
-
-  border-radius: 50%;
+  /* outline: 1px solid white; */
+  /* border-radius: 50%; */
 }

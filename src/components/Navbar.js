@@ -1,7 +1,7 @@
 import React from 'react';
 import './Navbar.css';
 import { NavLink } from 'react-router-dom';
-import logo from '../images/MITI logo.png';
+import logo from '../images/newLogo2.png';
 
 const Navbar = () => {
   return (
@@ -9,9 +9,9 @@ const Navbar = () => {
       <div className='navbar'>
         <div className='items-left'>
           <NavLink to='/' className='item'>
-            <img src={logo} alt='logo' className='logo' />
+            {/* <img src={logo} alt='logo' className='logo' /> */}
           </NavLink>
-          <NavLink to='/' className='item'>
+          {/* <NavLink to='/' className='item'>
             홈
           </NavLink>
           <NavLink to='/about' className='item'>
@@ -19,7 +19,7 @@ const Navbar = () => {
           </NavLink>
           <NavLink to='/importGame' className='item'>
             경기 등록
-          </NavLink>
+          </NavLink> */}
         </div>
         <div className='items-right'>
           <NavLink to='/signup' className='item'>

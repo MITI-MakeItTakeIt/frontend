@@ -17,6 +17,7 @@ import Login from './pages/Login';
 import SearchGame from './pages/SearchGame';
 import Signup from './pages/Signup';
 import Navbar from './components/Navbar';
+import Aside from './pages/Aside';
 
 //styles
 import './App.css';
@@ -26,6 +27,7 @@ const App = () => {
     <>
       <Router>
         <Navbar />
+        <Aside />
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/about' element={<About />} />
