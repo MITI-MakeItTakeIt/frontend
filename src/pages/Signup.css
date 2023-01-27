@@ -1,0 +1,117 @@
+.signup {
+  margin-left: 286px;
+  width: 100wh;
+  height: 100vh;
+  position: relative;
+}
+
+.signup-layout {
+  width: 900px;
+
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  margin: 0 auto;
+  margin-top: 120px;
+  margin-bottom: 150px;
+
+  display: flex;
+
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.signup .form-image > img {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+.signup .signup-form {
+  background-color: #fff;
+  display: flex;
+  /* align-items: center; */
+  flex-direction: column;
+  width: 100%;
+}
+
+.signup .signup-form .form {
+  padding: 30px;
+  display: flex;
+
+  flex-direction: column;
+  /* align-items: flex-start; */
+}
+
+h1 {
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: -5px;
+}
+
+.form .signup-item {
+  margin: 8px 10px;
+}
+
+.form label {
+  /* margin-right: 20px; */
+  font-size: 15px;
+}
+
+.form .signup-item .inputBox {
+  width: 100%;
+  height: 22px;
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+}
+.form .signup-item .confirm {
+  padding: 6px;
+  margin-left: 10px;
+  background-color: #d9d9d9d9;
+  border: 0.1px solid rgb(154, 153, 153);
+  color: black;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.form .signup-item .confirm:hover {
+  cursor: pointer;
+}
+
+.form .signup-item .signup-confirm {
+  display: flex;
+}
+
+.form .signup-item input[type='date'] {
+  font-size: 16px;
+  font-weight: 300;
+}
+
+.form .final-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15px;
+}
+form .final-buttons button {
+  width: 100%;
+  height: 40px;
+  margin: 0 10px;
+  border-radius: 10px;
+  border: none;
+  font-size: 15px;
+}
+
+.form .final-buttons button:hover {
+  cursor: pointer;
+}
+
+.form .final-buttons #submit {
+  background-color: var(--primary-color-orange);
+  color: #fff;
+}

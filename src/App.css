@@ -20,4 +20,6 @@ a {
 
 body {
   background-color: #f2e7d5;
+  overflow-y: hidden;
+  overflow-x: hidden;
 }

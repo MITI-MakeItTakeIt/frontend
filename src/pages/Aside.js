@@ -21,7 +21,7 @@ const Aside = () => {
           </div>
         </NavLink>
         {/* ------ 서비스 소개 영역  ------ */}
-        <NavLink to='/'>
+        <NavLink to='about'>
           <div className='aside-item home'>
             <div className='item'>
               <FaClone />
@@ -30,7 +30,7 @@ const Aside = () => {
           </div>
         </NavLink>
         {/* ------ 솔루션 영역  ------ */}
-        <NavLink to='/'>
+        <NavLink to='about'>
           <div className='aside-item home'>
             <div className='item'>
               <FaQuestionCircle />
@@ -39,7 +39,7 @@ const Aside = () => {
           </div>
         </NavLink>
         {/* ------ 경기 등록 영역  ------ */}
-        <NavLink to='/'>
+        <NavLink to='register'>
           <div className='aside-item home'>
             <div className='item'>
               <FaHome />
@@ -48,7 +48,7 @@ const Aside = () => {
           </div>
         </NavLink>
         {/* ------ 경기 조회 영역  ------ */}
-        <NavLink to='/'>
+        <NavLink to='participate'>
           <div className='aside-item home'>
             <div className='item'>
               <FaHome />
@@ -56,8 +56,8 @@ const Aside = () => {
             </div>
           </div>
         </NavLink>
-        {/* ------ 경기 침야 영역  ------ */}
-        <NavLink to='/'>
+        {/* ------ 경기 침여 영역  ------ */}
+        <NavLink to='searchGame'>
           <div className='aside-item home'>
             <div className='item'>
               <FaHandshake />

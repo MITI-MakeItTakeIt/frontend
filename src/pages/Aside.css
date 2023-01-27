@@ -1,22 +1,23 @@
 .aside {
-  position: fixed;
+  position: absolute;
   left: 0;
-  top: 80px;
+  top: 0;
   bottom: 0;
-  width: 425px;
-
+  max-width: 286px;
+  width: 100%;
+  height: 100%;
   background-color: var(--primary-color-darkergrey);
+  /* z-index: 9999; */
 }
 
 .aside-logo {
-  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-top: 40px;
 }
 .aside-logo img {
-  width: 200px;
+  width: 180px;
 }
 
 .aside-logo .aside-brand {
@@ -26,14 +27,13 @@
   margin-left: 40px;
   color: #fff;
   text-align: center;
-  font-size: 26px;
 }
 .aside-items {
   margin-top: 40px;
 }
 .aside-items .aside-item {
   color: #fff;
-  font-size: 22px;
+  font-size: 17px;
   width: 100%;
   max-width: 425px;
 }
@@ -51,11 +51,3 @@
   align-items: center;
   padding: 20px;
 }
-
-/* .aside .aside-brand {
-  width: 100%;
-}
-.aside .aside-brand h2 {
-  color: #fff;
-  text-align: center;
-} */

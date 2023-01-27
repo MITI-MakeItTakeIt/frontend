@@ -1,32 +1,18 @@
 import React from 'react';
 import './Navbar.css';
 import { NavLink } from 'react-router-dom';
-import logo from '../images/newLogo2.png';
+import Login from '../pages/Login';
 
 const Navbar = () => {
   return (
     <header>
       <div className='navbar'>
-        <div className='items-left'>
-          <NavLink to='/' className='item'>
-            {/* <img src={logo} alt='logo' className='logo' /> */}
-          </NavLink>
-          {/* <NavLink to='/' className='item'>
-            홈
-          </NavLink>
-          <NavLink to='/about' className='item'>
-            서비스 소개
-          </NavLink>
-          <NavLink to='/importGame' className='item'>
-            경기 등록
-          </NavLink> */}
-        </div>
-        <div className='items-right'>
+        <div className='items'>
           <NavLink to='/signup' className='item'>
-            회원가입
+            <div className='item'>회원가입</div>
           </NavLink>
           <NavLink to='/login' className='item'>
-            로그인
+            <div className='item'>로그인</div>
           </NavLink>
         </div>
       </div>
