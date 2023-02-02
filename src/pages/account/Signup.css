@@ -3,9 +3,11 @@
   width: 100wh;
   height: 100vh;
   position: relative;
+  display: block;
 }
 
 .signup-layout {
+  display: block;
   width: 900px;
 
   position: absolute;

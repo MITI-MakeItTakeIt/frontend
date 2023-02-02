@@ -12,13 +12,13 @@ import {
 //pages
 import Home from './pages/Home';
 import About from './pages/About';
-import ImportGame from './pages/ImportGame';
-import JoinGame from './pages/JoinGame';
-import Login from './pages/Login';
-import SearchGame from './pages/SearchGame';
-import Signup from './pages/Signup';
-import Navbar from './components/Navbar';
-import Aside from './pages/Aside';
+import ImportGame from './pages/games/ImportGame';
+import JoinGame from './pages/games/JoinGame';
+import Login from './pages/account/Login';
+import SearchGame from './pages/games/SearchGame';
+import Signup from './pages/account/Signup';
+// import Navbar from './components/Navbar';
+import Aside from './components/Aside';
 
 //styles
 import './App.css';
@@ -27,7 +27,7 @@ const App = () => {
   return (
     <>
       <Router>
-        <Navbar />
+        {/* <Navbar /> */}
         <Aside />
         <Routes>
           <Route path='/' element={<Home />} />

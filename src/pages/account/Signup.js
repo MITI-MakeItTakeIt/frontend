@@ -1,6 +1,6 @@
 import React from 'react';
 import './Signup.css';
-import img from '../images/7.jpg';
+import img from '../../images/7.jpg';
 
 const Signup = () => {
   return (

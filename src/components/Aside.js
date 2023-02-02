@@ -65,6 +65,20 @@ const Aside = () => {
             </div>
           </div>
         </NavLink>
+        <div className='account'>
+          {/* 로그인 버튼 */}
+          <NavLink to='login'>
+            <div className='login-box'>
+              <button id='login-btn'>로그인</button>
+            </div>
+          </NavLink>
+          {/* 회원가입 버튼 */}
+          <NavLink to='login'>
+            <div className='signup-box'>
+              <button id='signup-btn'>회원가입</button>
+            </div>
+          </NavLink>
+        </div>
       </div>
     </div>
   );
