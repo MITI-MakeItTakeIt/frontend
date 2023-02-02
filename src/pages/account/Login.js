@@ -3,7 +3,12 @@ import React from 'react';
 import './Login.css';
 // import kakaologin from '../images/kakao_login_medium_wide.png';
 const Login = () => {
-  return <>hello</>;
+  return (
+    <div className='login-layout'>
+      <div className='email-input'>이메일</div>
+      <input type='text' />
+    </div>
+  );
 };
 
 export default Login;

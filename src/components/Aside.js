@@ -1,6 +1,6 @@
 import React from 'react';
 import './Aside.css';
-import logo from '../images/newLogo2.png';
+import logo from '../images/MITI logo.png';
 import { FaHome, FaQuestionCircle, FaClone, FaHandshake } from 'react-icons/fa';
 import { NavLink } from 'react-router-dom';
 
