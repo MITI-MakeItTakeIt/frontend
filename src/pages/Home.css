@@ -16,11 +16,38 @@
 
 #hero-banner {
   position: absolute;
+  width: 380px;
+  height: 400px;
   /* top: 0; */
-  bottom: 20px;
-  right: 55px;
-  font-size: 30px;
+  top: 40px;
+  bottom: 40px;
+  right: 30px;
+  margin: auto;
+  font-size: 20px;
   color: #fff;
   display: block;
-  text-align: right;
+  text-align: center;
+
+  background-color: var(--primary-color-lightkhaki);
+  opacity: 0.9;
+  padding: 20px;
+  border-radius: 20px;
+
+  line-height: 1.8;
+}
+
+#hero-banner h1 {
+  color: var(--primary-color-yelloworange);
+}
+
+#hero-acc {
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  border-color: transparent;
+}
+
+#hero-acc:hover {
+  cursor: pointer;
+  border-color: var(--primary-color-orange);
 }
