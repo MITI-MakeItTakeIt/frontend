@@ -9,4 +9,18 @@
   background-position: center;
   background-repeat: no-repeat;
   /* margin-left: 286px; */
+  position: relative;
+  top: 0;
+  bottom: 0;
+}
+
+#hero-banner {
+  position: absolute;
+  /* top: 0; */
+  bottom: 20px;
+  right: 55px;
+  font-size: 30px;
+  color: #fff;
+  display: block;
+  text-align: right;
 }

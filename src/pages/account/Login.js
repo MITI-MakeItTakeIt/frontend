@@ -1,12 +1,38 @@
 import React from 'react';
-// import img from '../images/5.jpg';
 import './Login.css';
-// import kakaologin from '../images/kakao_login_medium_wide.png';
+import kakaoLoginBox from '../../images/kakao_login_medium_wide.png';
 const Login = () => {
   return (
     <div className='login-layout'>
-      <div className='email-input'>이메일</div>
-      <input type='text' />
+      <div className='login-wrap'>
+        {/* <div className='login-img'></div> */}
+        <div className='login-info'>
+          <h1>로그인</h1>
+          <form action=''>
+            <div className='input-wrapper'>
+              <input type='text' id='email' placeholder='이메일' />
+            </div>
+            <div className='input-wrapper'>
+              <input type='password' id='pass' placeholder='비빔번호' />
+            </div>
+            <div className='input-wrapper find-info'>
+              <p id='find-id-pass'>아이디/비밀번호 찾기</p>
+              <p id='to-signup'>회원가입 </p>
+            </div>
+            <div className='input-wrapper'>
+              <input type='button' value='로그인' id='login--btn' />
+            </div>
+            <div className='input-wrapper'>
+              <img
+                src={kakaoLoginBox}
+                alt='kakao login box'
+                id='kakao-login-btn'
+              />
+            </div>
+            <div className='input-wrapper'></div>
+          </form>
+        </div>
+      </div>
     </div>
   );
 };

@@ -4,12 +4,12 @@
   left: 0;
   top: 0;
   bottom: 0;
-  max-width: 286px;
 
-  width: 100%;
+  width: 286px;
   height: 100vh;
+
   background-color: var(--primary-color-darkgreen);
-  /* z-index: 9999; */
+  z-index: 9999;
 }
 
 .aside-logo {
@@ -55,6 +55,7 @@
   display: flex;
   align-items: center;
   padding: 20px;
+  display: block;
 }
 
 .account {
@@ -79,7 +80,7 @@
 }
 
 .account .login-box {
-  margin-bottom: 20px;
+  margin-bottom: 14px;
 }
 
 .account .login-box #login-btn {

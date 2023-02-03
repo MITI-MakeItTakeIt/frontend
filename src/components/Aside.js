@@ -1,7 +1,14 @@
 import React from 'react';
 import './Aside.css';
 import logo from '../images/MITI logo.png';
-import { FaHome, FaQuestionCircle, FaClone, FaHandshake } from 'react-icons/fa';
+import {
+  FaHome,
+  FaQuestionCircle,
+  FaClone,
+  FaHandshake,
+  FaBasketballBall,
+  FaSearchLocation,
+} from 'react-icons/fa';
 import { NavLink } from 'react-router-dom';
 
 const Aside = () => {
@@ -42,7 +49,7 @@ const Aside = () => {
         <NavLink to='register'>
           <div className='aside-item home'>
             <div className='item'>
-              <FaHome />
+              <FaBasketballBall />
               <span>경기 등록</span>
             </div>
           </div>
@@ -51,7 +58,7 @@ const Aside = () => {
         <NavLink to='participate'>
           <div className='aside-item home'>
             <div className='item'>
-              <FaHome />
+              <FaSearchLocation />
               <span>경기 조회</span>
             </div>
           </div>
@@ -73,7 +80,7 @@ const Aside = () => {
             </div>
           </NavLink>
           {/* 회원가입 버튼 */}
-          <NavLink to='login'>
+          <NavLink to='signup'>
             <div className='signup-box'>
               <button id='signup-btn'>회원가입</button>
             </div>
