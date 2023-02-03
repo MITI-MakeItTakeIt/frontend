@@ -76,7 +76,7 @@
   border-color: #000;
 }
 /* signup button  */
-.signup-wrap .signup-info form #signup--btn {
+.signup-wrap .signup-info form .signup--btn {
   width: 90%;
   height: 38px;
   font-size: 15px;
@@ -86,7 +86,7 @@
   display: block;
   margin: 0 auto;
 }
-.signup-wrap .signup-info form #signup--btn:hover {
+.signup-wrap .signup-info form .signup--btn:hover {
   border-color: #000;
   cursor: pointer;
 }
