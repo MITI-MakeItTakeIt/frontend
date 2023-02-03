@@ -1,8 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import './Signup.css';
 import Login from './Login';
-
-// import axios from './api/axios';
+import axios from '../../api/axios';
 
 //lower or uppercase letter. 3- 23 characters digits, hyphens or undersscores
 // const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9-_.@]{3,23}$/;
@@ -14,17 +13,16 @@ const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).{6,24}$/;
 // yyyy-mm-dd:
 const DATE_REGEX =
   /^(19|20)\d\d([- /.])(0[1-9]|1[012])\2(0[1-9]|[12][0-9]|3[01])$/;
-
-const REGISTER_URL = '/signup';
+const REGISTER_URL = '/';
 
 const Signup = () => {
   const userRef = useRef();
   const errRef = useRef();
 
   //user
-  const [user, setUser] = useState('');
+  const [email, setUser] = useState('');
   const [validName, setValidName] = useState(false);
-  const [useFocus, setUserFocus] = useState(false);
+  const [userFocus, setUserFocus] = useState(false);
   //nickname
   const [nickname, setUserNickname] = useState('');
   const [validNick, setValidNick] = useState(false);
@@ -34,11 +32,11 @@ const Signup = () => {
   const [validDate, setValidDate] = useState(false);
   const [dateFocus, setDateFocus] = useState(false);
   //password
-  const [pwd, setPwd] = useState('');
+  const [password, setPwd] = useState('');
   const [validPwd, setValidPwd] = useState(false);
   const [pwdFocus, setPwdFocus] = useState(false);
   //confirm password
-  const [matchPwd, setMatchPwd] = useState('');
+  const [matchpwd, setmatchpwd] = useState('');
   const [validMatch, setValidMatch] = useState(false);
   const [matchFocus, setMatchFocus] = useState(false);
   //error message
@@ -51,11 +49,11 @@ const Signup = () => {
 
   // user
   useEffect(() => {
-    const result = USER_REGEX.test(user);
+    const result = USER_REGEX.test(email);
     console.log(result);
-    console.log(user);
+    console.log(email);
     setValidName(result);
-  }, [user]);
+  }, [email]);
 
   // date
   useEffect(() => {
@@ -75,32 +73,60 @@ const Signup = () => {
 
   // password
   useEffect(() => {
-    const result = PWD_REGEX.test(pwd);
+    const result = PWD_REGEX.test(password);
     console.log(result);
-    console.log(pwd);
+    console.log(password);
     setValidPwd(result);
-    const match = pwd === matchPwd;
+    const match = password === matchpwd;
     setValidMatch(match);
-  }, [pwd, matchPwd]);
+  }, [password, matchpwd]);
 
   useEffect(() => {
     setErrMsg('');
-  }, [user, pwd, matchPwd]);
+  }, [email, password, matchpwd]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     //if button enabled with JS hack
-    const v1 = USER_REGEX.test(user);
-    const v2 = PWD_REGEX.test(pwd);
+    const v1 = USER_REGEX.test(email);
+    const v2 = PWD_REGEX.test(password);
     const v3 = USER_REGEX_NICK.test(nickname);
-    const v4 = DATE_REGEX.test(date);
-    if (!v1 || !v2 || !v3 || !v4) {
+
+    if (!v1 || !v2 || !v3) {
       setErrMsg('입력된 내용 확인해주세요');
       return;
     }
-    console.log(user, pwd, matchPwd, nickname, date);
-    setSuccess(true);
+    // console.log(user, pwd, matchpwd, nickname, date);
+    // setSuccess(true);
+
+    try {
+      const response = await axios.post(
+        REGISTER_URL,
+        JSON.stringify({ email, password, password_check: matchpwd, nickname }),
+        {
+          headers: { 'Content-Type': 'applications/json' },
+          withCredientails: true,
+        }
+      );
+      console.log(response.data);
+      console.log(response.accessToken);
+      console.log(JSON.stringify());
+      setSuccess(true);
+
+      // clear input fields
+    } catch (err) {
+      if (!err.response) {
+        setErrMsg('No Server Response');
+      } else if (err.response?.status === 409) {
+        setErrMsg('이미 가입된 정보입니다');
+      } else {
+        setErrMsg('회원가입 실패하셨습니다');
+        console.log(email, password, matchpwd, nickname, date);
+        console.log('AHHHHHHH ERRORRRR');
+      }
+      errRef.current.focus();
+    }
   };
 
   return (
@@ -130,9 +156,7 @@ const Signup = () => {
                     autoComplete='off'
                     onChange={(e) => setUser(e.target.value)}
                     required
-                    value={user}
-                    // aria-invalid={validName ? 'false' : 'true'}
-                    // aria-describedby='uidnote'
+                    value={email}
                     onFocus={() => setUserFocus(true)}
                     onBlur={() => setUserFocus(false)}
                     placeholder='이메일 주소'
@@ -149,7 +173,7 @@ const Signup = () => {
                     placeholder='비빔번호 (영문 소대문 특수문자 포함) 6~24글자'
                     onChange={(e) => setPwd(e.target.value)}
                     required
-                    value={pwd}
+                    value={password}
                     // aria-invalid={validPwd ? 'false' : 'true'}
                     // aria-describedby='pwdnote'
                     onFocus={() => setPwdFocus(true)}
@@ -162,8 +186,8 @@ const Signup = () => {
                     type='password'
                     id='pass-check'
                     placeholder='비빔번호 확인'
-                    value={matchPwd}
-                    onChange={(e) => setMatchPwd(e.target.value)}
+                    value={matchpwd}
+                    onChange={(e) => setmatchpwd(e.target.value)}
                     required
                     onFocus={() => setMatchFocus(true)}
                     onBlur={() => setMatchFocus(false)}
