@@ -3,8 +3,8 @@ import './Signup.css';
 import Login from './Login';
 import axios from '../../api/axios';
 
+// ================REGEX로 input restriction===================
 //lower or uppercase letter. 3- 23 characters digits, hyphens or undersscores
-// const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9-_.@]{3,23}$/;
 const USER_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
 // 영문자 소문자, 숫자, "-", "_" 로만 구성된 길이 2 ~ 10자리 사이 문자열
 const USER_REGEX_NICK = /^[a-z]{3,18}$/;
@@ -13,7 +13,7 @@ const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).{6,24}$/;
 // yyyy-mm-dd:
 const DATE_REGEX =
   /^(19|20)\d\d([- /.])(0[1-9]|1[012])\2(0[1-9]|[12][0-9]|3[01])$/;
-const REGISTER_URL = '/';
+// const REGISTER_URL = '/';
 
 const Signup = () => {
   const userRef = useRef();
@@ -83,7 +83,7 @@ const Signup = () => {
 
   useEffect(() => {
     setErrMsg('');
-  }, [email, password, matchpwd]);
+  }, [email, password, matchpwd, nickname]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -100,35 +100,65 @@ const Signup = () => {
     // console.log(user, pwd, matchpwd, nickname, date);
     // setSuccess(true);
 
-    try {
-      const response = await axios.post(
-        REGISTER_URL,
-        JSON.stringify({ email, password, password_check: matchpwd, nickname }),
-        {
-          headers: { 'Content-Type': 'applications/json' },
-          withCredientails: true,
-        }
-      );
-      console.log(response.data);
-      console.log(response.accessToken);
-      console.log(JSON.stringify());
-      setSuccess(true);
+    // ================FETCH PROMISES ===================
+    const data = {
+      email: email,
+      password: email,
+      password_confirm: matchpwd,
+      nickname: nickname,
+    };
 
-      // clear input fields
-    } catch (err) {
-      if (!err.response) {
-        setErrMsg('No Server Response');
-      } else if (err.response?.status === 409) {
-        setErrMsg('이미 가입된 정보입니다');
-      } else {
-        setErrMsg('회원가입 실패하셨습니다');
-        console.log(email, password, matchpwd, nickname, date);
-        console.log('AHHHHHHH ERRORRRR');
-      }
-      errRef.current.focus();
-    }
+    const requestOptions = {
+      method: 'POST', //OR POST
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    };
+    // https://reqres.in/api/users --> test API FETCH
+    // http://makeittakeit-env.eba-yfmvebdm.ap-northeast-2.elasticbeanstalk.com/
+    fetch('https://reqres.in/api/users', requestOptions)
+      // method: 'POST', // or 'PUT'
+      // headers: {
+      //   'Content-Type': 'application/json',
+      // },
+      // body: JSON.stringify(data),
+      .then((response) => response.json())
+      .then((data) => {
+        console.log('Success:', data);
+        setSuccess(true);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+        console.log('실패', email, password, matchpwd, nickname, date);
+      });
+
+    // ================AXIOS ===================
+    // try {
+    //   const response = await axios.post(
+    //     REGISTER_URL,
+    //     JSON.stringify({ email, password, password_check: matchpwd, nickname }),
+    //     {
+    //       headers: { 'Content-Type': 'applications/json' },
+    //       withCredientails: true,
+    //     }
+    //   );
+    //   console.log(response.data);
+    //   console.log(response.accessToken);
+    //   console.log(JSON.stringify());
+    //   setSuccess(true);
+    // } catch (err) {
+    //   if (!err.response) {
+    //     setErrMsg('No Server Response');
+    //   } else if (err.response?.status === 409) {
+    //     setErrMsg('이미 가입된 정보입니다');
+    //   } else {
+    //     setErrMsg('회원가입 실패하셨습니다');
+    //     console.log(email, password, matchpwd, nickname, date);
+    //     console.log('AHHHHHHH ERRORRRR');
+    //   }
+    //   errRef.current.focus();
+    // }
   };
-
+  // ================Write code below===================
   return (
     <>
       {success ? (
