@@ -1,0 +1,12 @@
+.profile {
+  font-size: 20px;
+  z-index: 888888;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  color: red;
+}
+
+.profile img {
+  width: 100px;
+}

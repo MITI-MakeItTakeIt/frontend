@@ -1,7 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import './Signup.css';
 import Login from './Login';
-import axios from '../../api/axios';
 
 // ================REGEX로 input restriction===================
 //lower or uppercase letter. 3- 23 characters digits, hyphens or undersscores
@@ -276,7 +275,7 @@ const Signup = () => {
             </div>
           </div>
         </div>
-      )}{' '}
+      )}
     </>
   );
 };

@@ -33,7 +33,7 @@
   text-align: center;
 }
 .aside-items {
-  margin-top: 40px;
+  margin-top: 20px;
 }
 .aside-items .aside-item {
   color: #fff;
@@ -55,7 +55,7 @@
   display: flex;
   align-items: center;
   padding: 20px;
-  display: block;
+  /* display: block; */
 }
 
 .account {
@@ -85,7 +85,6 @@
 
 .account .login-box #login-btn {
   background-color: var(--primary-color-darkergrey);
-
   color: #fff;
   font-weight: 400;
 }
