@@ -1,6 +1,9 @@
 import React, { useRef, useState, useEffect } from 'react';
 import './Signup.css';
 import Login from './Login';
+// import { useNavigate } from 'react-router-dom';
+// import axios from '../../api/axios';
+import axios from 'axios';
 
 // ================REGEX로 input restriction===================
 //lower or uppercase letter. 3- 23 characters digits, hyphens or undersscores
@@ -12,12 +15,12 @@ const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).{6,24}$/;
 // yyyy-mm-dd:
 const DATE_REGEX =
   /^(19|20)\d\d([- /.])(0[1-9]|1[012])\2(0[1-9]|[12][0-9]|3[01])$/;
-// const REGISTER_URL = '/';
-
+// const REGISTER_URL = 'http://3.34.46.148:8000/users ';
 const Signup = () => {
+  // const navigate = useNavigate();
+
   const userRef = useRef();
   const errRef = useRef();
-
   //user
   const [email, setUser] = useState('');
   const [validName, setValidName] = useState(false);
@@ -96,67 +99,40 @@ const Signup = () => {
       setErrMsg('입력된 내용 확인해주세요');
       return;
     }
-    // console.log(user, pwd, matchpwd, nickname, date);
-    // setSuccess(true);
-
     // ================FETCH PROMISES ===================
     const data = {
       email: email,
-      password: email,
-      password_confirm: matchpwd,
+      password: password,
+      password_check: matchpwd,
       nickname: nickname,
     };
 
     const requestOptions = {
       method: 'POST', //OR POST
       headers: { 'Content-Type': 'application/json' },
+      withCredentials: true,
       body: JSON.stringify(data),
     };
     // https://reqres.in/api/users --> test API FETCH
     // http://makeittakeit-env.eba-yfmvebdm.ap-northeast-2.elasticbeanstalk.com/
-    fetch('https://reqres.in/api/users', requestOptions)
-      // method: 'POST', // or 'PUT'
-      // headers: {
-      //   'Content-Type': 'application/json',
-      // },
-      // body: JSON.stringify(data),
+    fetch('/users', requestOptions)
       .then((response) => response.json())
       .then((data) => {
         console.log('Success:', data);
         setSuccess(true);
+        setUser('');
+        setPwd('');
+        setmatchpwd('');
+        setUserNickname('');
       })
       .catch((error) => {
         console.error('Error:', error);
-        console.log('실패', email, password, matchpwd, nickname, date);
+        console.log('FAILURE TO LOAD! ', email, password);
+        alert('로그인 실패, 회원가입 해주세요');
+        errRef.current.focus();
       });
-
-    // ================AXIOS ===================
-    // try {
-    //   const response = await axios.post(
-    //     REGISTER_URL,
-    //     JSON.stringify({ email, password, password_check: matchpwd, nickname }),
-    //     {
-    //       headers: { 'Content-Type': 'applications/json' },
-    //       withCredientails: true,
-    //     }
-    //   );
-    //   console.log(response.data);
-    //   console.log(response.accessToken);
-    //   console.log(JSON.stringify());
-    //   setSuccess(true);
-    // } catch (err) {
-    //   if (!err.response) {
-    //     setErrMsg('No Server Response');
-    //   } else if (err.response?.status === 409) {
-    //     setErrMsg('이미 가입된 정보입니다');
-    //   } else {
-    //     setErrMsg('회원가입 실패하셨습니다');
-    //     console.log(email, password, matchpwd, nickname, date);
-    //     console.log('AHHHHHHH ERRORRRR');
-    //   }
-    //   errRef.current.focus();
-    // }
   };
+
   // ================Write code below===================
   return (
     <>
@@ -175,7 +151,7 @@ const Signup = () => {
               >
                 {errMsg}
               </p>
-              <form onSubmit={handleSubmit}>
+              <form onSubmit={handleSubmit} method='POST '>
                 {/* ---------------EMAIL (USERNAME)----------------- */}
                 <div className='input-wrapper'>
                   <input
@@ -203,8 +179,6 @@ const Signup = () => {
                     onChange={(e) => setPwd(e.target.value)}
                     required
                     value={password}
-                    // aria-invalid={validPwd ? 'false' : 'true'}
-                    // aria-describedby='pwdnote'
                     onFocus={() => setPwdFocus(true)}
                     onBlur={() => setPwdFocus(false)}
                   />
@@ -281,3 +255,32 @@ const Signup = () => {
 };
 
 export default Signup;
+
+// ================AXIOS ===================
+/*try {
+      const response = await axios.post(
+        'http://3.34.46.148:8000/users',
+        JSON.stringify({ email, password, matchpwd, nickname }),
+        {
+          headers: { 'Content-Type': 'applications/json' },
+          withCredientails: true,
+        }
+      );
+      console.log(response?.data);
+      console.log(response?.accessToken);
+      console.log(JSON.stringify(response));
+      setSuccess(true);
+      setUser('');
+      setPwd('');
+      setmatchpwd('');
+      setUserNickname('');
+    } catch (err) {
+      if (!err?.response) {
+        setErrMsg('No Server Response');
+      } else if (err.response?.status === 409) {
+        setErrMsg('이미 가입된 정보입니다');
+      } else {
+        setErrMsg('회원가입 실패하셨습니다');
+        console.log(email, password, matchpwd, nickname, date);
+        console.log('AHHHHHHH ERRORRRR last failure');
+      } */

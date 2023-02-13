@@ -3,6 +3,13 @@ import AuthContext from '../../context/AutoProvider';
 import './Login.css';
 import kakaoLoginBox from '../../images/kakao_login_medium_wide.png';
 import Home from '../Home';
+import { useNavigate } from 'react-router-dom';
+
+// ================REGEX로 input restriction===================
+//lower or uppercase letter. 3- 23 characters digits, hyphens or undersscores
+const USER_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
+// at least 1 lower, upper, digit, special character , 8 -24 charcters
+const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).{6,24}$/;
 
 const Login = () => {
   // KAKAO AUTHENTICAITON
@@ -10,7 +17,7 @@ const Login = () => {
   const REDIRECT_URI = 'http://localhost:3000/oauth/kakao/callback';
   const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   // /////
 
@@ -33,11 +40,25 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     // console.log(email, password);
+
+    // setSuccess(true);
+
+    // =================Login Format Checker ============
+    const v1 = USER_REGEX.test(email);
+    const v2 = PWD_REGEX.test(password);
+
+    if (!v1) {
+      alert('이메일 확인해주세요');
+    }
+
+    if (!v2) {
+      alert('비밀번호 확인해주세요');
+    }
+
     setEmail('');
     setPassword('');
-    setSuccess(true);
-
     // ================FETCH PROMISES ===================
     const data = {
       email,
@@ -52,7 +73,7 @@ const Login = () => {
     };
     // https://reqres.in/api/users --> test API FETCH
     // http://makeittakeit-env.eba-yfmvebdm.ap-northeast-2.elasticbeanstalk.com/
-    fetch('https://reqres.in/api/users', requestOptions)
+    fetch('/users', requestOptions)
       .then((response) => response.json())
       .then((data) => {
         console.log('Success:', data);
@@ -66,6 +87,8 @@ const Login = () => {
       .catch((error) => {
         console.error('Error:', error);
         console.log('FAILURE TO LOAD! ', email, password);
+        alert('로그인 실패, 회원가입 해주세요');
+
         errRef.current.focus();
       });
   };
