@@ -41,7 +41,7 @@ const Profile = () => {
       <h2>{user_id}</h2>
       <h2>{nickName}</h2>
       <h2>{user_email}</h2>
-      <img src={profileImage} />
+      <img src={profileImage} alt='profile' />
     </div>
   );
 };
