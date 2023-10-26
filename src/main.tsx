@@ -1,6 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.tsx";
 import "./index.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { MainPage } from "./pages/MainPage.tsx";
@@ -12,6 +11,7 @@ import { NotFoundPage } from "./pages/NotFoundPage.tsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Layout } from "./pages/Layout.tsx";
+import { GameDetail } from "./pages/GameDetail.tsx";
 
 const queryClient = new QueryClient();
 
@@ -32,12 +32,13 @@ const router = createBrowserRouter([
         element: <UserRegister />,
       },
       {
-        path: "/registergame",
+        path: "/operate-game",
         element: <GameOperate />,
       },
       {
-        path: "/findgames",
+        path: "/find-games",
         element: <GamesList />,
+        children: [{ path: "detail/:gameId", element: <GameDetail /> }],
       },
       {
         path: "*",
