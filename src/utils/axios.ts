@@ -10,7 +10,7 @@ const axiosUrl: AxiosInstance = axios.create({
 });
 
 axiosUrl.interceptors.request.use(function (config) {
-    config.headers.Authorization = localStorage.getItem('token');
+    config.headers.Authorization = localStorage.getItem('access_token');
     return config;
 });
 
