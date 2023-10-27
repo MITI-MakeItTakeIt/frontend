@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import { useForm, SubmitHandler } from "react-hook-form";
-import { userRegisterSchema } from "../modals/UsersZod";
+import { useForm } from "react-hook-form";
+import axiosUrl from "../utils/axios";
+import { userRegisterSchema } from "../modals/UsersSchema";
 
 interface RegisterField {
   email: string;
@@ -8,14 +8,16 @@ interface RegisterField {
   password_check: string;
   nickname: string;
 }
-
+// const { errors } = useFormState(); /
 export const UserRegisterForm = () => {
   const { register, handleSubmit } = useForm<RegisterField>();
 
-  const onSubmit = (data: RegisterField) => {
+  const onSubmit = async (data: RegisterField) => {
     try {
       const userData = userRegisterSchema.parse(data);
-      console.log(userData);
+      const response = await axiosUrl.post("/users/", userData);
+
+      console.log(response.data);
     } catch (err) {
       console.error("Validation error", userRegisterSchema);
     }
@@ -47,14 +49,7 @@ export const UserRegisterForm = () => {
         })}
       />
 
-      <FormSubmitBtn>제출</FormSubmitBtn>
+      <button>제출</button>
     </form>
   );
 };
-
-const FormSubmitBtn = styled.button`
-  width: 200px;
-  height: 20px;
-  background-color: blue;
-  color: #fff;
-`;

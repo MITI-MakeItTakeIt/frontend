@@ -1,17 +1,17 @@
-import axios from "axios";
+import axios, { AxiosInstance } from "axios";
 
 
-const axiosUrl = axios.create({
+const axiosUrl: AxiosInstance = axios.create({
     baseURL: "http://api.makeittakeit.kr",
-    //   "Content-Type": "application/json",
+    headers: {
+        "Content-Type": "application/json",
+    }
+
 });
 
 axiosUrl.interceptors.request.use(function (config) {
-    const token = localStorage.getItem("accessToken");
-    if (token) config.headers.Authorization = `Bearer ${token}`;
+    config.headers.Authorization = localStorage.getItem('token');
     return config;
 });
-
-
 
 export default axiosUrl;
