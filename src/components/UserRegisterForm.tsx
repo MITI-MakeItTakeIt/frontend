@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { z } from "zod";
+import { userRegisterSchema } from "../modals/UsersZod";
 
 interface RegisterField {
   email: string;
@@ -9,34 +9,43 @@ interface RegisterField {
   nickname: string;
 }
 
-const userSchema = z.object({
-  email: z.string().email({ message: "Invalid email format" }),
-  password: z
-    .string()
-    .min(8, { message: "Password must be at least 8 characters" }),
-  password_check: z
-    .string()
-    .min(8, { message: "Password must be at least 8 characters" }),
-
-  nickname: z.string().min(5, { message: "Minimum of 5 or more characters" }),
-});
-
 export const UserRegisterForm = () => {
   const { register, handleSubmit } = useForm<RegisterField>();
-  const onSubmit: SubmitHandler<RegisterField> = (data) => {
+
+  const onSubmit = (data: RegisterField) => {
     try {
-      userSchema.parse(data);
-      console.log(data);
+      const userData = userRegisterSchema.parse(data);
+      console.log(userData);
     } catch (err) {
-      console.error("Validation error");
+      console.error("Validation error", userRegisterSchema);
     }
   };
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <input type="email" {...register("email")} />
-      <input type="password" {...register("password")} />
-      <input type="password" {...register("password_check")} />
-      <input type="text" {...register("nickname")} />
+      <input
+        type="email"
+        {...register("email", {
+          required: true,
+        })}
+      />
+      <input
+        type="password"
+        {...register("password", {
+          required: true,
+        })}
+      />
+      <input
+        type="password"
+        {...register("password_check", {
+          required: true,
+        })}
+      />
+      <input
+        type="text"
+        {...register("nickname", {
+          required: true,
+        })}
+      />
 
       <FormSubmitBtn>제출</FormSubmitBtn>
     </form>
