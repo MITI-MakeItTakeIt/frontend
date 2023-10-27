@@ -1,13 +1,8 @@
 import { useForm } from "react-hook-form";
 import axiosUrl from "../utils/axios";
-import { userRegisterSchema } from "../modals/UsersSchema";
+import { RegisterField } from "../interface/auth";
+import { userRegisterSchema } from "../modals/userSchema";
 
-interface RegisterField {
-  email: string;
-  password: string;
-  password_check: string;
-  nickname: string;
-}
 // const { errors } = useFormState(); /
 export const UserRegisterForm = () => {
   const { register, handleSubmit } = useForm<RegisterField>();
