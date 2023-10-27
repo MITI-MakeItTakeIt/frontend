@@ -1,8 +1,8 @@
 import { useForm } from "react-hook-form";
-import axiosUrl from "../utils/axios";
 import { RegisterField } from "../interface/auth";
 import { userRegisterSchema } from "../modals/userSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { userSignupPost } from "../api/users";
 
 // const { errors } = useFormState(); /
 export const UserRegisterForm = () => {
@@ -12,14 +12,12 @@ export const UserRegisterForm = () => {
     formState: { errors },
   } = useForm<RegisterField>({ resolver: zodResolver(userRegisterSchema) });
 
-  const onSubmit = async (data: RegisterField) => {
+  const onSubmit = (data: RegisterField) => {
     try {
       const userData = userRegisterSchema.parse(data);
-      const response = await axiosUrl.post("/users/", userData);
-
-      console.log(response.data);
-    } catch (err) {
-      console.error("Validation error", userRegisterSchema);
+      userSignupPost(userData);
+    } catch (error) {
+      console.error("Validation error");
     }
   };
   return (
