@@ -1,5 +1,9 @@
-import React from "react";
+import { GameOperateForm } from "../components/GameOperateForm";
 
 export const GameOperate = () => {
-  return <div>GameOperate</div>;
+  return (
+    <div>
+      <GameOperateForm />
+    </div>
+  );
 };
