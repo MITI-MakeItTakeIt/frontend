@@ -1,3 +1,4 @@
+import { ActiveGameInfo } from "../components/ActiveGameInfo";
 import { MainBanner } from "../components/MainBanner";
 
 export const MainPage = () => {
@@ -8,7 +9,7 @@ export const MainPage = () => {
         ⚡ 빠른 매칭 예약
       </p>
       {/* container */}
-      <div className="flex  w-screen">
+      <div className="flex ">
         {/* left  */}
         <div className="">
           {/* left top */}
@@ -29,18 +30,10 @@ export const MainPage = () => {
             </svg>
           </div>
           {/* left bottom */}
-          <div className="px-[1.1rem] py-[0.9rem] w-[307px] h-[409px] rounded-8 bg-[#FBFBFB]">
-            <span className="py-1 px-2 text-xs font-semibold leading-4 bg-blue-200 text-blue-600">
-              1명 모집
-            </span>
-            <p className="text-lg font-bold leading-7 text-[#333]">
-              수원 매탄 공원 4 vs 4 (주차 12자리)
-            </p>
-            <p className="text-sm font-medium leading-5 text-gray-500">
-              2023. 11. 15 15:30~ 18:00
-            </p>
-            <p className="text-[#4065F6] font-bold leading-7">₩23,000</p>
-            <span className="block w-275 h-px bg-gray-300"></span>
+          <div className="px-[1.1rem] py-[0.9rem] w-[307px] h-[409px] rounded-8 bg-[#FBFBFB] overflow-scroll">
+            <ActiveGameInfo />
+            <ActiveGameInfo />
+            <ActiveGameInfo />
           </div>
         </div>
         {/* right */}
