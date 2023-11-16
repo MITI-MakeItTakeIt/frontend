@@ -1,7 +1,7 @@
 import bg from "../assets/banner-2.svg";
 export const MainBanner = () => {
   return (
-    <aside>
+    <aside className="my-[2.5rem]">
       <div className=" mx-auto relative">
         <img className="mx-auto" src={bg} alt="basketball shot" />
         <div className="absolute left-6 bottom-6 font-Pretendard">
