@@ -13,7 +13,10 @@ export const GameOperateForm = () => {
     }
   };
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form
+      style={{ display: "flex", flexDirection: "column", width: "80vw" }}
+      onSubmit={handleSubmit(onSubmit)}
+    >
       <input
         type="text"
         {...register("startdate", {
