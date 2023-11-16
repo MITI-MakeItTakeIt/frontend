@@ -1,4 +1,4 @@
-export const ActiveGameInfo = () => {
+export const GameListInfo = () => {
   return (
     <>
       <span className="py-1 px-2 text-xs font-semibold leading-4 bg-blue-200 text-blue-600">
