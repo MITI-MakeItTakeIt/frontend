@@ -4,13 +4,13 @@ import { MainBanner } from "../components/MainBanner";
 
 export const MainPage = () => {
   return (
-    <body className="w-screen max-w-[90rem] px-[13rem]   ">
+    <body className="w-screen max-w-[90rem] px-[13rem]  mx-auto ">
       <MainBanner />
       <p className="mb-6 text-lg font-bold leading-6">⚡ 빠른 매칭 예약</p>
       {/* container */}
-      <div className="flex ">
+      <div className="flex justify-between ">
         {/* left  */}
-        <div className="">
+        <div className="flex flex-col justify-between">
           {/* left top */}
           <div className="flex items-center justify-between px-[1.1rem] py-[0.9rem] w-[307px] h-[48px] rounded-8 bg-[#FBFBFB]">
             {" "}
@@ -43,6 +43,12 @@ export const MainPage = () => {
       <p className="mb-6 text-lg font-bold leading-6">
         ⚡ 마감 ️12시간 전 매칭
       </p>
+      <div className="flex items-center justify-between">
+        <GameInfoCard />
+        <GameInfoCard />
+        <GameInfoCard />
+      </div>
+      <p className="mb-6 text-lg font-bold leading-6">🗓️ 마감 하루 전 매칭</p>
       <div className="flex items-center justify-between">
         <GameInfoCard />
         <GameInfoCard />
