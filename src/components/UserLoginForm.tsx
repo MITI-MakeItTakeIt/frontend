@@ -14,20 +14,24 @@ export const UserLoginForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
       <input
+        className="w-[350px] h-[35px] bg-[#F3F5F7] rounded-lg border border-gray-200 p-2"
         type="email"
         {...register("email", {
           required: true,
         })}
       />
       <input
+        className="w-[350px] h-[35px] bg-[#F3F5F7] rounded-lg border border-gray-200 p-2"
         type="password"
         {...register("password", {
           required: true,
         })}
       />
-      <button>제출</button>
+      <button className="bg-[#4065F6]  text-white p-[0.5rem] rounded-lg	">
+        로그이
+      </button>
     </form>
   );
 };
