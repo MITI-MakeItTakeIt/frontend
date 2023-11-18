@@ -4,15 +4,14 @@ export const GameListContainer = () => {
   return (
     <div className="flex justify-between ">
       {/* left  */}
-      <div className="flex flex-col justify-between">
+      <div className="mr-[41px]">
         {/* left top */}
         <div className="flex items-center justify-between px-[1.1rem] py-[0.9rem] w-[307px] h-[48px] rounded-8 bg-[#FBFBFB]">
-          {" "}
-          <span className="text-[16px]">2023. 11.15 (목)</span>
+          <span className="font-bold leading-[20.8px]">2023. 11.15 (목)</span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="12"
-            height="11"
+            height="10"
             viewBox="0 0 12 11"
             fill="none"
           >
@@ -23,14 +22,14 @@ export const GameListContainer = () => {
           </svg>
         </div>
         {/* left bottom */}
-        <div className="px-[1.1rem] py-[0.9rem] w-[307px] h-[409px] rounded-8 bg-[#FBFBFB] overflow-scroll">
+        <div className="px-[1.1rem] py-[0.9rem] w-[307px] h-[409px] rounded-8 bg-[#FBFBFB] overflow-scroll ">
           <GameListInfo />
           <GameListInfo />
           <GameListInfo />
         </div>
       </div>
       {/* right */}
-      <div className="w-[42.25rem] h-[29.6rem]  rounded-8 bg-yellow-100">
+      <div className="w-[676px] h-[473px]  rounded-[8px] bg-yellow-100">
         map
       </div>
     </div>

@@ -20,13 +20,17 @@ export const Header = () => {
             className="flex items-center"
             onClick={() => alert("in progress")}
           >
-            <span className=" font-bold">팀</span>
+            <span className=" font-bold text-[#707070]">팀</span>
             <span className="text-[0.8125rem] text-[#9B8EFD]">NEW</span>
           </div>
         </div>
         <div className="flex items-center justify-evenly gap-[1.5rem] text-[1rem]">
-          <NavLink to="/login">로그인</NavLink>
-          <NavLink to="/signup">회원가입</NavLink>
+          <NavLink to="/login" className="text-[#707070]">
+            로그인
+          </NavLink>
+          <NavLink to="/signup" className="text-[#707070]">
+            회원가입
+          </NavLink>
           <NavLink
             className="bg-[#4065F6] text-white p-[0.5rem] rounded-lg 	"
             to="/operate-game"

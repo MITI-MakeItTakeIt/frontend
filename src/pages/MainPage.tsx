@@ -10,13 +10,15 @@ export const MainPage = () => {
       <Title>⚡ 빠른 매칭 예약</Title>
       <GameListContainer />
       <Title> ⚡ 마감 ️12시간 전 매칭</Title>
-      <div className="flex items-center justify-between">
+      <div className=" flex items-center gap-[47px] overlfow-x-scroll">
+        <GameInfoCard />
         <GameInfoCard />
         <GameInfoCard />
         <GameInfoCard />
       </div>
       <Title> 🗓️ 마감 하루 전 매칭</Title>
-      <div className="flex items-center justify-between">
+      <div className="flex items-center gap-[47px] overlfow-x-scroll">
+        <GameInfoCard />
         <GameInfoCard />
         <GameInfoCard />
         <GameInfoCard />
