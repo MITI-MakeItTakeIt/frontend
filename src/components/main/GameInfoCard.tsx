@@ -1,4 +1,5 @@
 import img from "../../assets/game_info.svg";
+import { GameStatusTitle } from "./GameStatusTitle";
 
 export const GameInfoCard = () => {
   return (
@@ -10,9 +11,7 @@ export const GameInfoCard = () => {
       <p className="text-base font-semibold leading-5">
         빠른 매칭 16:00 ~ 18:00
       </p>
-      <span className="py-1 px-2 text-xs font-semibold leading-4 bg-blue-200 text-blue-600">
-        1명 남은
-      </span>
+      <GameStatusTitle>1명 남음</GameStatusTitle>
       <p className="text-base font-medium leading-5">
         남녀모두 · 5vs5 · 풀코트 · 뉴비
       </p>

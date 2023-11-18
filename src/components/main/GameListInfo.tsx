@@ -1,9 +1,9 @@
-import { GameStatus } from "./GameStatus";
+import { GameStatusTitle } from "./GameStatusTitle";
 
 export const GameListInfo = () => {
   return (
     <div className="flex flex-col gap-[4px]">
-      <GameStatus>1명 모집</GameStatus>
+      <GameStatusTitle>1명 모집</GameStatusTitle>
       <p className="text-lg font-bold leading-7 text-[#333]">
         수원 매탄 공원 4 vs 4 (주차 12자리)
       </p>
