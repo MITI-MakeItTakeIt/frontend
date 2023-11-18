@@ -8,21 +8,13 @@ export const postOperateGame = async (data: OperateGame) => {
     return response.data
 }
 export const getFindAllGames = async () => {
-    const response = await axiosUrl.get('/games/',
-        // {
-        //     headers: { Authorization: getAuthorizationHeader() }
-        // }
-    )
+    const response = await axiosUrl.get('/games/')
     console.log(response.data)
     return response.data
 }
 
 export const getFindGame = async (gameId: number) => {
-    const response = await axiosUrl.get(`/games/${gameId}`,
-        // {
-        //     headers: { Authorization: getAuthorizationHeader() }
-        // }
-    )
+    const response = await axiosUrl.get(`/games/${gameId}`)
     console.log(response.data)
     return response.data
 }

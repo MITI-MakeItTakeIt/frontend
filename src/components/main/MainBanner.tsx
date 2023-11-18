@@ -1,4 +1,4 @@
-import bg from "../assets/banner-2.svg";
+import bg from "../../assets/banner-2.svg";
 export const MainBanner = () => {
   return (
     <aside className="my-[2.5rem]">

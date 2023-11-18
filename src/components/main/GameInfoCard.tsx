@@ -1,4 +1,4 @@
-import img from "../assets/game_info.svg";
+import img from "../../assets/game_info.svg";
 
 export const GameInfoCard = () => {
   return (
