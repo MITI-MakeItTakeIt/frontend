@@ -21,16 +21,20 @@ export const UserRegisterForm = () => {
     }
   };
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
       <input
+        className="w-[350px] h-[35px] bg-[#F3F5F7] rounded-lg border border-gray-200 p-2"
         type="email"
+        placeholder="이메일"
         {...register("email", {
           required: true,
         })}
       />
       {errors.email?.message && <p>{errors.email?.message}</p>}
       <input
+        className="w-[350px] h-[35px] bg-[#F3F5F7] rounded-lg border border-gray-200 p-2"
         type="password"
+        placeholder="비밀번호"
         {...register("password", {
           required: true,
         })}
@@ -38,7 +42,9 @@ export const UserRegisterForm = () => {
       {errors.password?.message && <p>{errors.password?.message}</p>}
 
       <input
+        className="w-[350px] h-[35px] bg-[#F3F5F7] rounded-lg border border-gray-200 p-2"
         type="password"
+        placeholder="비빈번호 확인"
         {...register("password_check", {
           required: true,
         })}
@@ -48,14 +54,18 @@ export const UserRegisterForm = () => {
       )}
 
       <input
+        className="w-[350px] h-[35px] bg-[#F3F5F7] rounded-lg border border-gray-200 p-2"
         type="text"
+        placeholder="닉네임"
         {...register("nickname", {
           required: true,
         })}
       />
       {errors.nickname?.message && <p>{errors.nickname?.message}</p>}
 
-      <button>제출</button>
+      <button className="bg-[#4065F6]  text-white p-[0.5rem] rounded-lg	">
+        회원가입
+      </button>
     </form>
   );
 };
