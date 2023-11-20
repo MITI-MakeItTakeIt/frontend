@@ -1,5 +1,6 @@
 import { UserLoginForm } from "../components/UserLoginForm";
 import kakaoLogin from "../assets/kakao_login_medium_wide.png";
+import { NavLink } from "react-router-dom";
 
 export const UserLogin = () => {
   return (
@@ -12,9 +13,12 @@ export const UserLogin = () => {
         </p>
         <p className="text-sm text-gray-600">
           계정이 없으신가요?{" "}
-          <span className="text-blue-500 hover:underline cursor-pointer">
+          <NavLink
+            to="/signup"
+            className="text-blue-500 hover:underline cursor-pointer"
+          >
             회원가입
-          </span>
+          </NavLink>
         </p>
       </div>
       <hr className="block w-[275px] h-px bg-black my-[2rem]" />

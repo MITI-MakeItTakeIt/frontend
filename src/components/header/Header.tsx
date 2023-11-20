@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import logo from "../assets/MITI_logo.svg";
+import logo from "../../assets/MITI_logo.svg";
 
 export const Header = () => {
   return (
@@ -13,7 +13,7 @@ export const Header = () => {
               alt="miti logo"
             />
           </NavLink>
-          <NavLink className="" to="/find-games">
+          <NavLink className="" to="/">
             <span className="font-bold">빠른 매칭</span>
           </NavLink>
           <div

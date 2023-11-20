@@ -1,13 +1,22 @@
 import { GameListInfo } from "./GameListInfo";
 
 export const GameListContainer = () => {
+  const today = new Date();
+  const options = {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    weekday: "short",
+  };
+  const formattedDate = today.toLocaleDateString("ko-KR", options);
+
   return (
     <div className="flex justify-between ">
       {/* left  */}
       <div className="mr-[41px]">
         {/* left top */}
         <div className="flex items-center justify-between px-[1.1rem] py-[0.9rem] w-[307px] h-[48px] rounded-8 bg-[#FBFBFB]">
-          <span className="font-bold leading-[20.8px]">2023. 11.15 (목)</span>
+          <span className="font-bold leading-[20.8px]">{formattedDate}</span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="12"
