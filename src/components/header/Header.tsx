@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import logo from "../../assets/MITI_logo.svg";
+import { Button } from "../Button";
 
 export const Header = () => {
   return (
@@ -32,10 +33,12 @@ export const Header = () => {
             회원가입
           </NavLink>
           <NavLink
-            className="bg-[#4065F6] text-white p-[0.5rem] rounded-lg 	"
+            // className="bg-[#4065F6] text-white p-[0.5rem] rounded-lg 	"
             to="/operate-game"
           >
-            경기 만들기
+            <Button size="small">경기 만들기</Button>
+
+            {/* 경기 만들기 */}
           </NavLink>
         </div>
       </nav>
