@@ -1,4 +1,4 @@
-import { UserLoginForm } from "../components/UserLoginForm";
+import { UserLoginForm } from "../components/auth/UserLoginForm";
 import kakaoLogin from "../assets/kakao_login_medium_wide.png";
 import { NavLink } from "react-router-dom";
 

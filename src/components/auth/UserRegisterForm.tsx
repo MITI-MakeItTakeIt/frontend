@@ -1,8 +1,8 @@
 import { useForm } from "react-hook-form";
-import { RegisterField } from "../interface/auth";
-import { userRegisterSchema } from "../modals/userSchema";
+import { RegisterField } from "../../interface/auth";
+import { userRegisterSchema } from "../../modals/userSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { userSignupPost } from "../api/users";
+import { userSignupPost } from "../../api/users";
 
 // const { errors } = useFormState(); /
 export const UserRegisterForm = () => {

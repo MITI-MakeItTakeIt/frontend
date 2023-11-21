@@ -12,6 +12,8 @@ export interface OperateGame {
     info: string
 }
 
+
+
 export interface AllGamesData {
     id: number;
     startdate: string;

@@ -10,8 +10,8 @@ export const GamesList = () => {
   };
   return (
     <div>
-      <button onClick={handleGetGamesData}>회회</button>
-      <button onClick={findgame}>single</button>
+      {/* <button onClick={handleGetGamesData}>회회</button> */}
+      {/* <button onClick={findgame}>single</button> */}
     </div>
   );
 };

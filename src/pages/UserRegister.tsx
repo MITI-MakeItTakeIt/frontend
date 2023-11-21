@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { UserRegisterForm } from "../components/UserRegisterForm";
+import { UserRegisterForm } from "../components/auth/UserRegisterForm";
 
 export const UserRegister = () => {
   return (
