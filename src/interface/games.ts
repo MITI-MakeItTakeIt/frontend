@@ -49,3 +49,8 @@ export interface GameData {
     modified_at: string;
     host: number;
 }
+
+export interface GameFormSteps {
+    step: number;
+    setStep?: any;
+}

@@ -1,9 +1,10 @@
 interface ButtonProps {
   size?: "small" | "medium" | "large";
   children: string;
+  onClick?: () => number;
 }
 
-export const Button = ({ size, children }: ButtonProps) => {
+export const Button = ({ size, children, onClick }: ButtonProps) => {
   const buttonSizes = () => {
     switch (size) {
       case "small":
@@ -36,6 +37,7 @@ export const Button = ({ size, children }: ButtonProps) => {
       type="button"
       className=" p-[0.5rem] rounded-lg bg-[#4065F6] text-center text-white"
       style={buttonStyles}
+      onClick={onClick}
     >
       {children}
     </button>
