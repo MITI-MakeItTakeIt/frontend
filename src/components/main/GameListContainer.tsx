@@ -2,13 +2,12 @@ import { GameListInfo } from "./GameListInfo";
 
 export const GameListContainer = () => {
   const today = new Date();
-  const options = {
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-    weekday: "short",
-  };
-  const formattedDate = today.toLocaleDateString("ko-KR", options);
+  const year = today.getFullYear();
+  const month = (today.getMonth() + 1).toString().padStart(2, "0");
+  const day = today.getDate().toString().padStart(2, "0");
+  const dayOfWeek = ["일", "월", "화", "수", "목", "금", "토"][today.getDay()];
+
+  const formattedDate = `${year}. ${month}. ${day}. (${dayOfWeek})`;
 
   return (
     <div className="flex justify-between ">
