@@ -14,6 +14,8 @@ import { Layout } from "./pages/Layout.tsx";
 
 const queryClient = new QueryClient();
 
+// import.meta.env.VITE_APP_KAKAO_JAVASCRIPT_KEY
+
 const router = createBrowserRouter([
   {
     element: <Layout />,

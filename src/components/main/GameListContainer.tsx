@@ -1,3 +1,4 @@
+import { KakaoMap } from "../games/KakaoMap";
 import { GameListInfo } from "./GameListInfo";
 
 export const GameListContainer = () => {
@@ -37,8 +38,8 @@ export const GameListContainer = () => {
         </div>
       </div>
       {/* right */}
-      <div className="w-[676px] h-[473px]  rounded-[8px] bg-yellow-100">
-        map
+      <div className="w-[676px] h-[473px]  rounded-[8px] ">
+        <KakaoMap />
       </div>
     </div>
   );
