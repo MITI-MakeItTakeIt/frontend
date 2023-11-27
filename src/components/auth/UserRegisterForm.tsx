@@ -3,6 +3,7 @@ import { RegisterField } from "../../interface/auth";
 import { userRegisterSchema } from "../../modals/userSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { userSignupPost } from "../../api/users";
+import { useNavigate } from "react-router-dom";
 
 // const { errors } = useFormState(); /
 export const UserRegisterForm = () => {
@@ -11,11 +12,13 @@ export const UserRegisterForm = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<RegisterField>({ resolver: zodResolver(userRegisterSchema) });
+  const navigate = useNavigate();
 
   const onSubmit = (data: RegisterField) => {
     try {
       const userData = userRegisterSchema.parse(data);
       userSignupPost(userData);
+      navigate("/login");
     } catch (error) {
       console.error("Validation error");
     }

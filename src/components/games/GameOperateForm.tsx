@@ -9,6 +9,7 @@ export const GameOperateForm = ({ step, setStep }: GameFormSteps) => {
   const onSubmit = (data: OperateGame) => {
     try {
       postOperateGame(data);
+      console.log(data);
     } catch (error) {
       console.error("Operate Failure");
     }
@@ -165,7 +166,7 @@ export const GameOperateForm = ({ step, setStep }: GameFormSteps) => {
             <Button size="small" onClick={() => setStep(2)}>
               이전
             </Button>
-            <Button size="small">제출</Button>
+            <button>제출</button>
           </div>
         </>
       )}

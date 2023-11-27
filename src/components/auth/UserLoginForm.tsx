@@ -1,13 +1,16 @@
+import { useNavigate } from "react-router-dom";
+import { userLoginPost } from "../../api/users";
 import { LoginField } from "../../interface/auth";
 import { useForm } from "react-hook-form";
-import { userLoginPost } from "../../api/users";
 
 export const UserLoginForm = () => {
   const { register, handleSubmit } = useForm<LoginField>();
+  const navigate = useNavigate();
 
   const onSubmit = (data: LoginField) => {
     try {
       userLoginPost(data);
+      navigate("/");
     } catch (error) {
       console.error("Login Failure");
     }
