@@ -4,7 +4,7 @@ import axiosUrl from "../utils/axios"
 export const userSignupPost = async (data: RegisterField) => {
     const response = await axiosUrl.post('/users/', data)
     console.log(response.data)
-    return response.data
+    return response
 }
 
 export const userLoginPost = async (data: LoginField) => {
@@ -14,5 +14,5 @@ export const userLoginPost = async (data: LoginField) => {
         localStorage.setItem('access_token', response.data.data.token.access)
         console.log('access token saved');
     }
-    return response.data
+    return response
 }
