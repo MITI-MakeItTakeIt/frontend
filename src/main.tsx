@@ -10,11 +10,8 @@ import { NotFoundPage } from "./pages/NotFoundPage.tsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Layout } from "./pages/Layout.tsx";
-// import { GameDetail } from "./pages/GameDetail.tsx";
 
 const queryClient = new QueryClient();
-
-// import.meta.env.VITE_APP_KAKAO_JAVASCRIPT_KEY
 
 const router = createBrowserRouter([
   {
@@ -36,11 +33,7 @@ const router = createBrowserRouter([
         path: "/operate-game",
         element: <GameOperate />,
       },
-      // {
-      //   path: "/find-games",
-      //   element: <GamesList />,
-      //   children: [{ path: "detail/:gameId", element: <GameDetail /> }],
-      // },
+
       {
         path: "*",
         element: <NotFoundPage />,

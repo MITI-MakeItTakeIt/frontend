@@ -1,10 +1,22 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import logo from "../../assets/MITI_logo.svg";
 import { Button } from "../Button";
+import { useEffect, useState } from "react";
 
 export const Header = () => {
+  const [isLogged, setIsLogged] = useState(false);
   const navigate = useNavigate();
-  const getToken = localStorage.getItem("access_token");
+
+  // const getToken = localStorage.getItem("access_token");
+  useEffect(() => {
+    const getToken = localStorage.getItem("access_token");
+    if (getToken) {
+      setIsLogged(true);
+    } else {
+      setIsLogged(false);
+    }
+  }, []);
+
   const handleLogout = () => {
     localStorage.clear();
     alert("로그아웃");
@@ -33,7 +45,7 @@ export const Header = () => {
           </div>
         </div>
         <div className="flex items-center justify-evenly gap-[1.5rem] text-[1rem]">
-          {getToken ? (
+          {isLogged ? (
             <button onClick={handleLogout}>로그아웃</button>
           ) : (
             <>

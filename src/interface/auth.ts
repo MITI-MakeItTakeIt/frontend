@@ -4,7 +4,7 @@ export interface LoginField {
     token?: string,
     access_token?: string,
     refresh_token?: string
-
+    data?: () => void
 }
 
 export interface RegisterField {
@@ -16,4 +16,4 @@ export interface RegisterField {
 
 export interface KakaoLogin {
     login_url: string;
-}
+} 
