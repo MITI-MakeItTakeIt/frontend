@@ -16,9 +16,10 @@ export const getFindGame = async (gameId: number) => {
 
 
 export const getFindGameByDate = async (value: string) => {
+
     const response = await axiosUrl.get(`/games/?date=${value}`)
-    // console.log(response.data)
-    return response.data
+    return response
+
 }
 
 export const getFindGameByTime = async (value: string) => {
