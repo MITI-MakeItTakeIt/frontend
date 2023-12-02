@@ -3,7 +3,7 @@ import { getFindGameByDate } from "../api/games";
 
 export const useGamesDateQuery = (date: string) => {
   return useQuery({
-    queryKey: ["gamesByDate"],
+    queryKey: ["gamesByDate", date],
     queryFn: () => getFindGameByDate(date),
     staleTime: 1000 * 60,
     refetchOnWindowFocus: false,

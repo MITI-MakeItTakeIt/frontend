@@ -2,17 +2,10 @@ import { KakaoMap } from "../games/KakaoMap";
 import { GameListInfo } from "./GameListInfo";
 import "react-datepicker/dist/react-datepicker.css";
 import { useGamesDateQuery } from "../../hooks/useGamesDateQuery";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export const GameListContainer = () => {
-  const [selectingDate, setSelectedDate] = useState(
-    new Date().toLocaleDateString("ko-KR", {
-      year: "numeric",
-      month: "numeric",
-      day: "numeric",
-      weekday: "long",
-    })
-  );
+  const [selectingDate, setSelectedDate] = useState(new Date());
   const [displayDates, setDisplayDates] = useState(false);
 
   const handleDisplayDates = () => {
@@ -23,45 +16,23 @@ export const GameListContainer = () => {
     setSelectedDate(input);
   };
 
-  // console.log(date.toLocaleDateString("kr-KO"));
-
-  // alert(date.getFullYear());
-  const changeDateFormat = (value) => {
-    const date = new Date(value);
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, "0");
-    const day = String(date.getDate()).padStart(2, "0");
-
-    return `${year}-${month}-${day}`;
+  const changeDateFormatForAPI = (value) => {
+    const nextDay = new Date(value);
+    nextDay.setDate(nextDay.getDate() + 1);
+    return nextDay.toISOString().slice(0, 10);
   };
 
-  console.log("----");
-
-  console.log(changeDateFormat(selectingDate));
-
-  // alert(changeDateFormat(date));
   const next13Days = [];
-
   for (let i = 0; i < 14; i++) {
     const newDate = new Date();
     newDate.setDate(newDate.getDate() + i);
-    const formattedDate = newDate.toLocaleDateString("ko-KR", {
-      year: "numeric",
-      month: "numeric",
-      day: "numeric",
-      weekday: "long",
-    });
-    next13Days.push(formattedDate);
+    next13Days.push(newDate);
   }
 
-  // console.log(next13Days);
+  // useEffect(() => {}, [selectingDate]);
+  const apiFormatDate = changeDateFormatForAPI(selectingDate);
 
-  // query
-  const {
-    data: gamesByDateData,
-
-    // } = useGamesDateQuery(dateFormat);
-  } = useGamesDateQuery("2023-12-10");
+  const { data: gamesByDateData } = useGamesDateQuery(apiFormatDate);
 
   return (
     <div className="flex justify-between ">
@@ -73,22 +44,12 @@ export const GameListContainer = () => {
           className=" hover:cursor-pointer relative flex items-center justify-between px-[1.1rem] py-[0.9rem] w-[307px] mb-[16px] h-[48px] rounded-8 bg-[#FBFBFB]"
         >
           <span className="font-bold leading-[20.8px]">
-            {/* {date.toLocaleDateString("ko-KR", {
+            {selectingDate.toLocaleDateString("ko-KR", {
               year: "numeric",
               month: "numeric",
               day: "numeric",
               weekday: "long",
-            })} */}
-            {/* {date} */}
-            {/* {selectingDate instanceof Date
-              ? selectingDate.toLocaleDateString("ko-KR", {
-                  year: "numeric",
-                  month: "numeric",
-                  day: "numeric",
-                  weekday: "long",
-                })
-              : "Invalid Date"} */}
-            {selectingDate}
+            })}
           </span>
 
           <svg
@@ -111,7 +72,12 @@ export const GameListContainer = () => {
                   className="hover:cursor-pointer hover:text-black hover:font-bold "
                   onClick={() => handleSelectDate(dateList)}
                 >
-                  {dateList}
+                  {dateList.toLocaleDateString("ko-KR", {
+                    year: "numeric",
+                    month: "numeric",
+                    day: "numeric",
+                    weekday: "long",
+                  })}
                 </span>
               ))}
             </div>
