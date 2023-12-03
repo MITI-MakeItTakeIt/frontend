@@ -5,7 +5,7 @@ interface GameDateProp {
 }
 
 export const GameListInfo = ({ gamesByDateData }: GameDateProp) => {
-  console.log(gamesByDateData);
+  // console.log(gamesByDateData);
 
   return (
     <>

@@ -18,16 +18,17 @@ export const GameListContainer = () => {
 
   const changeDateFormatForAPI = (value) => {
     const nextDay = new Date(value);
-    nextDay.setDate(nextDay.getDate() + 1);
+    // nextDay.setDate(nextDay.getDate());
     return nextDay.toISOString().slice(0, 10);
   };
 
-  const next13Days = [];
+  const availableDates = [];
   for (let i = 0; i < 14; i++) {
     const newDate = new Date();
     newDate.setDate(newDate.getDate() + i);
-    next13Days.push(newDate);
+    availableDates.push(newDate);
   }
+  // console.log(availableDates);
 
   // useEffect(() => {}, [selectingDate]);
   const apiFormatDate = changeDateFormatForAPI(selectingDate);
@@ -66,11 +67,23 @@ export const GameListContainer = () => {
           </svg>
           {displayDates && (
             <div className="   border absolute flex flex-col gap-3 py-[0.9rem] top-[48px] left-0 px-[1.1rem] rounded-8 text-gray-400  bg-[#FBFBFB] w-full">
-              {next13Days.map((dateList, index) => (
+              {availableDates.map((dateList, index) => (
                 <span
                   key={index}
-                  className="hover:cursor-pointer hover:text-black hover:font-bold "
+                  className="hover:cursor-pointer hover:text-black hover:font-bold"
                   onClick={() => handleSelectDate(dateList)}
+                  style={{
+                    fontWeight:
+                      selectingDate.toISOString().slice(0, 10) ===
+                      dateList.toISOString().slice(0, 10)
+                        ? 700
+                        : 500,
+                    color:
+                      selectingDate.toISOString().slice(0, 10) ===
+                      dateList.toISOString().slice(0, 10)
+                        ? "black"
+                        : "gray-400",
+                  }}
                 >
                   {dateList.toLocaleDateString("ko-KR", {
                     year: "numeric",
