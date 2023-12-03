@@ -1,4 +1,3 @@
-import { getFindAllGames, getFindGameByDate } from "../api/games";
 import { GameInfoCard } from "../components/main/GameInfoCard";
 import { GameListContainer } from "../components/main/GameListContainer";
 import { MainBanner } from "../components/main/MainBanner";

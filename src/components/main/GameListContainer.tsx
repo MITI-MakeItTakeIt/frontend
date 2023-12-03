@@ -17,9 +17,15 @@ export const GameListContainer = () => {
   };
 
   const changeDateFormatForAPI = (value) => {
-    const nextDay = new Date(value);
-    // nextDay.setDate(nextDay.getDate());
-    return nextDay.toISOString().slice(0, 10);
+    const formattedDate = new Date(value);
+    const year = formattedDate.getFullYear();
+    const month = formattedDate.getMonth() + 1;
+    const day =
+      formattedDate.getDate() < 10
+        ? "0" + formattedDate.getDate()
+        : formattedDate.getDate();
+
+    return `${year}-${month}-${day}`;
   };
 
   const availableDates = [];
@@ -43,6 +49,7 @@ export const GameListContainer = () => {
         >
           <span className="font-bold leading-[20.8px]">
             {selectingDate.toLocaleDateString("ko-KR", {
+              timeZone: "Asia/Seoul",
               year: "numeric",
               month: "numeric",
               day: "numeric",
@@ -83,6 +90,7 @@ export const GameListContainer = () => {
                   }}
                 >
                   {dateList.toLocaleDateString("ko-KR", {
+                    timeZone: "Asia/Seoul",
                     year: "numeric",
                     month: "numeric",
                     day: "numeric",
