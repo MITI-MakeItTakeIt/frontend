@@ -28,11 +28,8 @@ export const GameListContainer = () => {
     newDate.setDate(newDate.getDate() + i);
     availableDates.push(newDate);
   }
-  // console.log(availableDates);
 
-  // useEffect(() => {}, [selectingDate]);
   const apiFormatDate = changeDateFormatForAPI(selectingDate);
-
   const { data: gamesByDateData } = useGamesDateQuery(apiFormatDate);
 
   return (
@@ -103,7 +100,7 @@ export const GameListContainer = () => {
       </div>
       {/* right */}
       <div className="w-[676px] h-[473px]  rounded-[8px] ">
-        <KakaoMap />
+        <KakaoMap gamesByDateData={gamesByDateData} />
       </div>
     </div>
   );
