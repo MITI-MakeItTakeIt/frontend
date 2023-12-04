@@ -14,7 +14,6 @@ export const UserLoginForm = () => {
   const onSubmit = async (data: LoginField) => {
     // mutate(data);
     await userLoginPost(data);
-    localStorage.setItem("userAccess", "true");
     login();
     navigate("/");
   };
