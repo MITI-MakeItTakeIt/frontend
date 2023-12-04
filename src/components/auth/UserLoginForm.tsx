@@ -2,16 +2,20 @@ import { useNavigate } from "react-router-dom";
 import { LoginField } from "../../interface/auth";
 import { useForm } from "react-hook-form";
 import { userLoginPost } from "../../api/users";
+import useAuthStore from "../../store/useAuthStore";
 
 export const UserLoginForm = () => {
   const { register, handleSubmit } = useForm<LoginField>();
   const navigate = useNavigate();
+  const { login } = useAuthStore();
 
   // const { mutate, isError } = useLoginMutation(data);
 
-  const onSubmit = (data: LoginField) => {
+  const onSubmit = async (data: LoginField) => {
     // mutate(data);
-    userLoginPost(data);
+    await userLoginPost(data);
+    localStorage.setItem("userAccess", "true");
+    login();
     navigate("/");
   };
 

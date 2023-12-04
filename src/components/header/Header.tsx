@@ -1,27 +1,19 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import logo from "../../assets/MITI_logo.svg";
 import { Button } from "../Button";
-import { useEffect, useState } from "react";
+import useAuthStore from "../../store/useAuthStore";
 
 export const Header = () => {
-  const [isLogged, setIsLogged] = useState(false);
+  const { isLoggedIn, logout } = useAuthStore();
   const navigate = useNavigate();
 
-  // const getToken = localStorage.getItem("access_token");
-  useEffect(() => {
-    const getToken = localStorage.getItem("access_token");
-    if (getToken) {
-      setIsLogged(true);
-    } else {
-      setIsLogged(false);
-    }
-  }, []);
-
   const handleLogout = () => {
-    localStorage.clear();
-    alert("로그아웃");
+    logout();
     navigate("/login");
+    window.location.reload();
   };
+  // // const getToken = localStorage.getItem("access_token");
+
   return (
     <header className="flex items-center w-full  max-w-[90] h-[3.75rem] px-[13rem] ">
       <nav className="flex  items-center justify-between w-full text-[1.25rem] ">
@@ -45,7 +37,7 @@ export const Header = () => {
           </div>
         </div>
         <div className="flex items-center justify-evenly gap-[1.5rem] text-[1rem]">
-          {isLogged ? (
+          {isLoggedIn ? (
             <button onClick={handleLogout}>로그아웃</button>
           ) : (
             <>
@@ -58,13 +50,8 @@ export const Header = () => {
             </>
           )}
 
-          <NavLink
-            // className="bg-[#4065F6] text-white p-[0.5rem] rounded-lg 	"
-            to="/operate-game"
-          >
+          <NavLink to="/operate-game">
             <Button size="small">경기 만들기</Button>
-
-            {/* 경기 만들기 */}
           </NavLink>
         </div>
       </nav>
