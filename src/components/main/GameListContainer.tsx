@@ -2,7 +2,7 @@ import { KakaoMap } from "../games/KakaoMap";
 import { GameListInfo } from "./GameListInfo";
 import "react-datepicker/dist/react-datepicker.css";
 import { useGamesDateQuery } from "../../hooks/useGamesDateQuery";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export const GameListContainer = () => {
   const [selectingDate, setSelectedDate] = useState(new Date());
@@ -12,11 +12,11 @@ export const GameListContainer = () => {
     setDisplayDates(!displayDates);
   };
 
-  const handleSelectDate = (input) => {
+  const handleSelectDate = (input: Date) => {
     setSelectedDate(input);
   };
 
-  const changeDateFormatForAPI = (value) => {
+  const changeDateFormatForAPI = (value: Date) => {
     const formattedDate = new Date(value);
     const year = formattedDate.getFullYear();
     const month = formattedDate.getMonth() + 1;
@@ -108,7 +108,7 @@ export const GameListContainer = () => {
       </div>
       {/* right */}
       <div className="w-[676px] h-[473px]  rounded-[8px] ">
-        <KakaoMap gamesByDateData={gamesByDateData} />
+        <KakaoMap />
       </div>
     </div>
   );

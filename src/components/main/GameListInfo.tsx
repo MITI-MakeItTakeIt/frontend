@@ -1,3 +1,4 @@
+import { AllGamesData } from "../../interface/games";
 import { GameStatusTitle } from "./GameStatusTitle";
 
 interface GameDateProp {
@@ -9,7 +10,7 @@ export const GameListInfo = ({ gamesByDateData }: GameDateProp) => {
 
   return (
     <>
-      {gamesByDateData?.data?.data.map((game) => {
+      {gamesByDateData?.data?.data.map((game: AllGamesData) => {
         return (
           <div key={game.id} className="flex flex-col gap-[4px]">
             <GameStatusTitle>
