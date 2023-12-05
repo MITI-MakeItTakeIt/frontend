@@ -38,6 +38,8 @@ export const GameListContainer = () => {
   const apiFormatDate = changeDateFormatForAPI(selectingDate);
   const { data: gamesByDateData } = useGamesDateQuery(apiFormatDate);
 
+  console.log(gamesByDateData);
+
   return (
     <div className="flex justify-between ">
       {/* left  */}
@@ -102,7 +104,7 @@ export const GameListContainer = () => {
           )}
         </div>
         {/* left bottom */}
-        <div className="px-[1.1rem] py-[0.9rem] w-[307px] h-[409px] rounded-8 bg-[#FBFBFB] overflow-scroll ">
+        <div className="px-[1.1rem] py-[0.9rem] w-[307px] h-[409px] rounded-8 bg-[#FBFBFB] overflow-hidden ">
           <GameListInfo gamesByDateData={gamesByDateData} />
         </div>
       </div>
