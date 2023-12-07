@@ -1,18 +1,29 @@
 import { useForm } from "react-hook-form";
-import { GameFormSteps, OperateGame } from "../../interface/games";
+import { OperateGame } from "../../interface/games";
 import { postOperateGame } from "../../api/games";
-import { Button } from "../Button";
 import { FindAddress } from "../address/FindAddress";
+import { useNavigate } from "react-router-dom";
 
 export const GameOperateForm = () => {
   const { register, handleSubmit } = useForm<OperateGame>();
+  const navigate = useNavigate();
+  const handleWindowConfirm = (data) => {
+    if (window.confirm("경기를 생성하시겠습니까?")) {
+      postOperateGame(data);
+      console.log(data);
+      alert("성공");
+      navigate("/");
+    } else {
+      alert("취소");
+      return;
+    }
+  };
 
   const onSubmit = (data: OperateGame) => {
     try {
-      postOperateGame(data);
-      console.log(data);
+      handleWindowConfirm(data);
     } catch (error) {
-      console.error("Operate Failure");
+      console.error();
     }
   };
   return (
@@ -43,7 +54,6 @@ export const GameOperateForm = () => {
           })}
         />
       </div>
-      {/* <hr className="w-[25rem] border border-grey-100 my-6" /> */}
 
       <div className="flex  gap-4">
         <div className="flex items-center   gap-4">
@@ -58,7 +68,6 @@ export const GameOperateForm = () => {
           />
         </div>
         <div className="flex items-center   gap-4">
-          {/* <label htmlFor="start--time">시작 시간</label> */}
           <input
             className=" h-[35px] bg-[#F3F5F7] rounded-lg border border-gray-200 p-2"
             type="time"
@@ -91,7 +100,6 @@ export const GameOperateForm = () => {
           />
         </div>
       </div>
-      {/* <hr className="w-[25rem] border border-grey-100 my-6" /> */}
 
       <div className="flex  gap-4">
         <div className="flex items-center   gap-4">
@@ -137,12 +145,10 @@ export const GameOperateForm = () => {
           })}
         />
       </div>
-      {/* <div className="mx-auto my-4"> */}
-      {/* <Button size="medium">제출</Button> */}
-      <button className=" p-[0.5rem] rounded-lg bg-[#4065F6] text-center text-white">
+
+      <button className="mx-auto w-[20rem] my-4 p-[0.5rem] rounded-lg bg-[#4065F6] text-center text-white">
         제출
       </button>
-      {/* </div> */}
     </form>
   );
 };
