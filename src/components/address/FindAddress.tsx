@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDaumPostcodePopup } from "react-daum-postcode";
 
-export const FindAddress = () => {
+export const FindAddress = ({ register }) => {
   const [showAddressPopup, setShowAddressPopup] = useState(false);
   const open = useDaumPostcodePopup();
 
@@ -21,7 +21,7 @@ export const FindAddress = () => {
     }
 
     setShowAddressPopup(fullAddress);
-    console.log(showAddressPopup);
+    // console.log(showAddressPopup);
     // console.log(fullAddress); // e.g. '서울 성동구 왕십리로2길 20 (성수동1가)'
   };
 
@@ -30,16 +30,22 @@ export const FindAddress = () => {
   };
 
   return (
-    <div className="border w-[40rem] p-4 flex ">
+    <div className="flex    gap-4">
       {/* <Label htmlFor="addressBar">경기장 주소</Label> */}
-      <label className="w-[5rem]" onClick={handleClick}>
-        주소 찾기
-      </label>
+      <button
+        onClick={handleClick}
+        className="hover:cursor-pointer border border-gray-200 w-[5rem] p-2 text-[14px] rounded-md "
+      >
+        주소찾기
+      </button>
       <input
+        className=" w-[450px] h-[35px] bg-[#F3F5F7] rounded-lg border border-gray-200 p-2"
         type="text"
+        {...register("address", {
+          required: true,
+        })}
         value={showAddressPopup ? showAddressPopup : ""}
         readOnly
-        className="w-full"
       />
     </div>
   );
