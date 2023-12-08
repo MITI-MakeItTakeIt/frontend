@@ -4,14 +4,13 @@ import useGameStore from "../../store/useGameStore";
 import { GameStatusTitle } from "./GameStatusTitle";
 
 export const GameListInfo = () => {
-  // console.log(gamesByDateData);
   const { isLoggedIn } = useAuthStore();
   const { gamesByDateData } = useGameStore();
 
   return (
     <div className="overflow-auto w-full h-full">
       {isLoggedIn ? (
-        gamesByDateData?.data?.data.map((game: AllGamesData) => {
+        gamesByDateData?.data?.data?.map((game: AllGamesData) => {
           return (
             <div key={game.id} className="flex flex-col gap-[4px] ">
               <GameStatusTitle>

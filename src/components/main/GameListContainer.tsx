@@ -77,7 +77,7 @@ export const GameListContainer = () => {
           </svg>
           {displayDates && (
             <div className="   border absolute flex flex-col gap-3 py-[0.9rem] top-[48px] left-0 px-[1.1rem] rounded-8 text-gray-400  bg-[#FBFBFB] w-full">
-              {availableDates.map((dateList, index) => (
+              {availableDates?.map((dateList, index) => (
                 <span
                   key={index}
                   className="hover:cursor-pointer hover:text-black hover:font-bold"

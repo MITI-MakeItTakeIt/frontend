@@ -1,3 +1,4 @@
+import { Banner } from "../components/advertisement/Banner";
 import { HalfDayFinalGames } from "../components/games/HalfDayFinalGames";
 import { TodaysFinalGames } from "../components/games/TodaysFinalGames";
 import { GameListContainer } from "../components/main/GameListContainer";
@@ -21,6 +22,7 @@ export const MainPage = () => {
       <div className="flex items-center gap-[47px] overflow-x-scroll">
         <TodaysFinalGames />
       </div>
+      <Banner />
     </div>
   );
 };
