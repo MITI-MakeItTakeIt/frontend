@@ -1,9 +1,9 @@
-import { useState } from "react";
 import { GameOperateForm } from "../components/games/GameOperateForm";
-import { MultistepGuide } from "../components/games/MultistepGuide";
+import useGameStore from "../store/useGameStore";
 
 export const GameOperate = () => {
-  const [step, setStep] = useState(1);
+  const { gamesByDateData } = useGameStore();
+  console.log("from run games", gamesByDateData);
 
   return (
     <div className=" flex flex-col items-center   my-[2rem]   max-w-[90rem] px-[13rem] mx-auto">

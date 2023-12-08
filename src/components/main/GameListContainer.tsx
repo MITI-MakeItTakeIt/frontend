@@ -2,11 +2,13 @@ import { KakaoMap } from "../games/KakaoMap";
 import { GameListInfo } from "./GameListInfo";
 import "react-datepicker/dist/react-datepicker.css";
 import { useGamesDateQuery } from "../../hooks/useGamesDateQuery";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import useGameStore from "../../store/useGameStore";
 
 export const GameListContainer = () => {
   const [selectingDate, setSelectedDate] = useState(new Date());
   const [displayDates, setDisplayDates] = useState(false);
+  const { setGamesByDateData } = useGameStore();
 
   const handleDisplayDates = () => {
     setDisplayDates(!displayDates);
@@ -38,7 +40,9 @@ export const GameListContainer = () => {
   const apiFormatDate = changeDateFormatForAPI(selectingDate);
   const { data: gamesByDateData } = useGamesDateQuery(apiFormatDate);
 
-  console.log(gamesByDateData);
+  useEffect(() => {
+    setGamesByDateData(gamesByDateData);
+  }, [gamesByDateData]);
 
   return (
     <div className="flex justify-between ">
@@ -105,7 +109,7 @@ export const GameListContainer = () => {
         </div>
         {/* left bottom */}
         <div className="px-[1.1rem] py-[0.9rem] w-[307px] h-[409px] rounded-8 bg-[#FBFBFB] overflow-hidden ">
-          <GameListInfo gamesByDateData={gamesByDateData} />
+          <GameListInfo />
         </div>
       </div>
       {/* right */}

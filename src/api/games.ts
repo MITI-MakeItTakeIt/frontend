@@ -28,8 +28,8 @@ export const getFindGameByTime = async (value: string) => {
     return response
 }
 
-export const getFindAllGames = async () => {
-    const response = await axiosUrl.get(`/game/future`)
-    // console.log(response.data)
-    return response.data
-}
+// export const getFindAllGames = async () => {
+//     const response = await axiosUrl.get(`/game/future`)
+//     // console.log(response.data)
+//     return response.data
+// }

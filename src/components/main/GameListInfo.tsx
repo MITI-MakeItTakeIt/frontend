@@ -1,14 +1,12 @@
 import { AllGamesData } from "../../interface/games";
 import useAuthStore from "../../store/useAuthStore";
+import useGameStore from "../../store/useGameStore";
 import { GameStatusTitle } from "./GameStatusTitle";
 
-interface GameDateProp {
-  gamesByDateData: string;
-}
-
-export const GameListInfo = ({ gamesByDateData }: GameDateProp) => {
+export const GameListInfo = () => {
   // console.log(gamesByDateData);
   const { isLoggedIn } = useAuthStore();
+  const { gamesByDateData } = useGameStore();
 
   return (
     <div className="overflow-auto w-full h-full">

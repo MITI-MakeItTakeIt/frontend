@@ -50,7 +50,3 @@ export interface GameData {
     host: number;
 }
 
-export interface GameFormSteps {
-    step: number;
-    setStep?: any;
-}
