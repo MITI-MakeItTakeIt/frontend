@@ -1,10 +1,11 @@
 import { GameStatusTitle } from "../main/GameStatusTitle";
 import img from "../../assets/game_info.svg";
 import { useGamesDateQuery } from "../../hooks/useGamesDateQuery";
-import { useState } from "react";
+import { AllGamesData } from "../../interface/games";
+// import { useState } from "react";
 
 export const HalfDayFinalGames = () => {
-  const [today, setToday] = useState(new Date());
+  // const [today, setToday] = useState(new Date());
 
   const changeDateFormatForAPI = (value: Date) => {
     const formattedDate = new Date(value);
@@ -18,10 +19,10 @@ export const HalfDayFinalGames = () => {
     return `${year}-${month}-${day}`;
   };
 
-  const formattedDate = changeDateFormatForAPI(today);
+  const formattedDate = changeDateFormatForAPI(new Date());
   const { data: todaysMatch } = useGamesDateQuery(formattedDate);
 
-  const filteredGames = todaysMatch?.data.data.filter((game) => {
+  const filteredGames = todaysMatch?.data.data.filter((game: AllGamesData) => {
     const startTime = new Date(`${formattedDate} ${game.starttime}`);
     const noonTime = new Date(`${formattedDate} 12:00:00`);
     return startTime > noonTime;
@@ -31,7 +32,7 @@ export const HalfDayFinalGames = () => {
 
   return (
     <>
-      {filteredGames?.map((game) => {
+      {filteredGames?.map((game: AllGamesData) => {
         return (
           <div key={game.id} className="w-[220px] h-[205px]">
             <img src={img} alt="game info pic" />

@@ -1,10 +1,11 @@
-import { useState } from "react";
+// import { useState } from "react";
 import img from "../../assets/game_info.svg";
 import { useGamesDateQuery } from "../../hooks/useGamesDateQuery";
+import { AllGamesData } from "../../interface/games";
 import { GameStatusTitle } from "../main/GameStatusTitle";
 
 export const TodaysFinalGames = () => {
-  const [today, setToday] = useState(new Date());
+  // const [today, setToday] = useState(new Date());
 
   const changeDateFormatForAPI = (value: Date) => {
     const formattedDate = new Date(value);
@@ -18,14 +19,14 @@ export const TodaysFinalGames = () => {
     return `${year}-${month}-${day}`;
   };
 
-  const formattedDate = changeDateFormatForAPI(today);
+  const formattedDate = changeDateFormatForAPI(new Date());
   const { data: todaysMatch } = useGamesDateQuery(formattedDate);
 
   console.log(todaysMatch);
 
   return (
     <>
-      {todaysMatch?.data.data.map((game) => {
+      {todaysMatch?.data.data.map((game: AllGamesData) => {
         return (
           <div key={game.id} className="w-[220px] h-[205px]">
             <img src={img} alt="game info pic" />

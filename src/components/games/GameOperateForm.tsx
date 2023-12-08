@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 export const GameOperateForm = () => {
   const { register, handleSubmit } = useForm<OperateGame>();
   const navigate = useNavigate();
-  const handleWindowConfirm = (data) => {
+  const handleWindowConfirm = (data: OperateGame) => {
     if (window.confirm("경기를 생성하시겠습니까?")) {
       postOperateGame(data);
       console.log(data);

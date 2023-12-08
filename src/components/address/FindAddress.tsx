@@ -1,11 +1,24 @@
 import { useState } from "react";
 import { useDaumPostcodePopup } from "react-daum-postcode";
 
-export const FindAddress = ({ register }) => {
-  const [showAddressPopup, setShowAddressPopup] = useState(false);
+interface Register {
+  register: any; // eslint-disable-line @typescript-eslint/no-explicit-any
+}
+
+interface FindAddress {
+  address: string;
+  addressType: string;
+  bname: string;
+  buildingName: string;
+}
+
+export const FindAddress = ({ register }: Register) => {
+  const [showAddressPopup, setShowAddressPopup] = useState<string | false>(
+    false
+  );
   const open = useDaumPostcodePopup();
 
-  const handleComplete = (data) => {
+  const handleComplete = (data: FindAddress) => {
     let fullAddress = data.address;
     let extraAddress = "";
 
