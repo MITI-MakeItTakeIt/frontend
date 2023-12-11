@@ -1,4 +1,5 @@
 import { AllGamesData } from "../../interface/games";
+import useAddressStore from "../../store/useAddressStore";
 import useAuthStore from "../../store/useAuthStore";
 import useGameStore from "../../store/useGameStore";
 import { GameStatusTitle } from "./GameStatusTitle";
@@ -6,13 +7,20 @@ import { GameStatusTitle } from "./GameStatusTitle";
 export const GameListInfo = () => {
   const { isLoggedIn } = useAuthStore();
   const { gamesByDateData } = useGameStore();
+  const { setGameAddress } = useAddressStore();
+
+  const handleLog = (address: string) => setGameAddress(address);
 
   return (
     <div className="overflow-auto w-full h-full">
       {isLoggedIn ? (
         gamesByDateData?.data?.data?.map((game: AllGamesData) => {
           return (
-            <div key={game.id} className="flex flex-col gap-[4px] ">
+            <div
+              key={game.id}
+              className="flex flex-col gap-[4px] "
+              onClick={() => handleLog(game.address)}
+            >
               <GameStatusTitle>
                 {`${game.max_invitation - game.participations.length}명 모집`}
               </GameStatusTitle>

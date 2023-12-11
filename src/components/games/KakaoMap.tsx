@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import useGameStore from "../../store/useGameStore";
+import useAddressStore from "../../store/useAddressStore";
 
 declare global {
   interface Window {
@@ -14,6 +15,9 @@ interface GeocoderResult {
 
 export const KakaoMap = () => {
   const { gamesByDateData } = useGameStore();
+  const { gameAddress } = useAddressStore();
+  console.log("--");
+  console.log("gameaddress", gameAddress);
 
   useEffect(() => {
     const container = document.getElementById("map"); //지도를 담을 영역의 DOM 레퍼런스
@@ -28,6 +32,24 @@ export const KakaoMap = () => {
     const zoomControl = new window.kakao.maps.ZoomControl();
     kakaoMap.addControl(zoomControl, window.kakao.maps.ControlPosition.RIGHT);
     const geocoder = new window.kakao.maps.services.Geocoder();
+
+    // 장소 검색 객체를 생성합니다
+    // const ps = new window.kakao.maps.services.Places();
+
+    // // 키워드로 장소를 검색합니다
+    // ps.keywordSearch("서울 성동구 서울숲길 17", placesSearchCB);
+
+    // // 키워드 검색 완료 시 호출되는 콜백함수 입니다
+    // function placesSearchCB(data, status, pagination) {
+    //   if (status === window.kakao.maps.services.Status.OK) {
+    //     // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
+    //     // LatLngBounds 객체에 좌표를 추가합니다
+    //     // const bounds = new window.kakao.maps.LatLngBounds();
+
+    //     // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
+    //     kakaoMap.setBounds();
+    //   }
+    // }
 
     gamesByDateData?.data?.data.map(
       (position: { address: string; title: string }) => {
